@@ -21,7 +21,7 @@ import {
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { apis } from './apis';
+import { apis, keycloakAuthApiRef } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
 import { Root } from './components/Root';
@@ -30,6 +30,7 @@ import {
   AlertDisplay,
   OAuthRequestDialog,
   SignInPage,
+
 } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
 import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
@@ -57,7 +58,20 @@ const app = createApp({
     });
   },
   components: {
-    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
+    // This creates a new extension, see "Extension Blueprints" documentation for more details
+    SignInPage: props => (
+      <SignInPage
+        {...props}
+        auto
+        provider={{
+          id: 'auth',
+          title: 'keycloak',
+          message: 'Sign in using keycloak',
+          apiRef: keycloakAuthApiRef,
+        }}
+      />
+    ),
+    
   },
 });
 

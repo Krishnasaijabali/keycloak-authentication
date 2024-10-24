@@ -27,7 +27,7 @@ backend:
     origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
-  # This is for local development only, it is not recommended to use this in production
+  # This is for local development only; it is not recommended to use this in production
   # The production database configuration is stored in app-config.production.yaml
   database:
     client: pg
@@ -43,14 +43,14 @@ integrations:
       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
       # about setting up the GitHub integration here: https://backstage.io/docs/integrations/github/locations#configuration
       token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
+    # Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
     #   token: ${GHE_TOKEN}
 
 proxy:
-  ### Example for how to add a proxy endpoint for the frontend.
-  ### A typical reason to do this is to handle HTTPS and CORS for internal services.
+  # Example for how to add a proxy endpoint for the frontend.
+  # A typical reason to do this is to handle HTTPS and CORS for internal services.
   # endpoints:
   #   '/test':
   #     target: 'https://example.com'
@@ -70,9 +70,9 @@ techdocs:
 auth:
   environment: development
   providers:
-      keycloak:
-        development:
-        metadataUrl:https://dev-auth.voltacabs.com/realms/voltacabs/.well-known/openid-configuration
+    keycloak:
+      development:
+        metadataUrl: https://dev-auth.voltacabs.com/realms/voltacabs/.well-known/openid-configuration
         clientId: backstage_ui  # The client ID you set in Keycloak
         clientSecret: MhRayfeCBx3GrErmwMi1IWuCmfwLLHfz  # The client secret from Keycloak
         scopes: ['openid', 'profile', 'email']  # Required scopes for authentication
@@ -118,11 +118,11 @@ catalog:
       rules:
         - allow: [User, Group]
 
-    ## Uncomment these lines to add more example data
+    # Uncomment these lines to add more example data
     # - type: url
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
 
-    ## Uncomment these lines to add an example org
+    # Uncomment these lines to add an example org
     # - type: url
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:

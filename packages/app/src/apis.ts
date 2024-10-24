@@ -13,10 +13,12 @@ import {
 import { createApiRef } from '@backstage/core-plugin-api';
 import { OAuth2 } from '@backstage/core-app-api'; 
 
-export const keycloakAuthApiRef = createApiRef({
+import { OAuthApi, ProfileInfoApi, BackstageIdentityApi, SessionApi } from '@backstage/core-plugin-api';
+
+export const keycloakAuthApiRef = createApiRef<OAuthApi & ProfileInfoApi & BackstageIdentityApi & SessionApi>({
   id: 'plugin.auth-backend.keycloak',
-  
 });
+
 
 export const apis: AnyApiFactory[] = [
   

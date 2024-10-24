@@ -64,10 +64,10 @@ const app = createApp({
         {...props}
         auto
         provider={{
-          id: 'auth',
+          id: 'backstage_ui',
           title: 'keycloak',
           message: 'Sign in using keycloak',
-          apiRef: keycloakAuthApiRef,
+          apiRef: keycloakAuthApiRef ,
         }}
       />
     ),
